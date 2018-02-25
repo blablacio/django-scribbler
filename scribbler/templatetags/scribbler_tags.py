@@ -62,7 +62,7 @@ class ScribbleNode(template.Node):
             else:
                 scribble_template = template.Template(self.raw)
         scribble_context = build_scribble_context(scribble, context)
-        content = scribble_template.render(scribble_context, request)
+        content = scribble_template.render(scribble_context.flatten(), request)
         wrapper_template = template.loader.get_template('scribbler/scribble-wrapper.html')
         context['scribble'] = scribble
         context['rendered_scribble'] = content
